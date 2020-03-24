@@ -1,1 +1,148 @@
-<p>create-crime works!</p>
+<div class="container-fluid">
+  <form #crimeForm="ngForm" (ngSubmit)="saveCrime(crime)">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Create Crime Record</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group" [class.has-error]="name.invalid && name.touched">
+          <label for="name" class="control-label">Name</label>
+          <input id="name" required type="text" class="form-control" name="name"
+                 [(ngModel)]="crime.name" #name="ngModel">
+          <span class="help-block" *ngIf="name.invalid && name.touched">
+            Name is required
+          </span>
+        </div>
+        <!--<div class="form-group" [class.has-error]="email.invalid && email.touched">
+          <label for="email" class="control-label">Email</label>
+          <input id="email" required email type="text" class="form-control" name="email"
+                 [(ngModel)]="crime.email" #email="ngModel">
+          <span class="help-block" *ngIf="email.errors?.required && email.touched">
+            Email is required
+          </span>
+          <span class="help-block" *ngIf="email.errors?.email && email.touched">
+            Email is Invalid
+          </span>
+        </div>-->
+        <!--<div class="form-group" [class.has-error]="email.invalid && email.touched">
+          <label for="email" class="control-label">Email</label>
+          <input required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+                 id="email" type="text" class="form-control" name="email"
+                 [(ngModel)]="crime.email" #email="ngModel">
+          <span class="help-block" *ngIf="email.errors?.required && email.touched">
+            Email is required
+          </span>
+          <span class="help-block" *ngIf="email.errors?.pattern && email.touched">
+            Email is Invalid
+          </span>
+        </div>-->
+        <div class="form-group" [class.has-error]="gender.invalid">
+          <label class="control-label">Gender</label>
+          <div class="form-control">
+            <label class="radio-inline">
+              <input type="radio" name="gender" required #gender="ngModel"
+                     value="male" [(ngModel)]="crime.gender"> Male
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="gender" required #gender="ngModel"
+                     value="female" [(ngModel)]="crime.gender"> Female
+            </label>
+          </div>
+          <span class="help-block" *ngIf="gender.errors?.required">
+            Gender is required
+          </span>
+        </div>
+        <div class="form-group" [class.has-error]="contactPreference.invalid">
+          <label class="control-label">Contact Preference</label>
+          <div class="form-control">
+            <label class="radio-inline">
+              <input type="radio" required #contactPreference="ngModel" name="contactPreference"
+                     value="email" [(ngModel)]="crime.contactPreference"> Email
+            </label>
+            <label class="radio-inline">
+              <input type="radio" required #contactPreference="ngModel" name="contactPreference"
+                     value="phone" [(ngModel)]="crime.contactPreference"> Phone
+            </label>
+          </div>
+          <span class="help-block" *ngIf="contactPreference.errors?.required">
+            Contact Preference is required
+          </span>
+          <!-- Delete the below line after you see
+          the selected value in the browser -->
+          Contact Preference Selected Value : {{ contactPreference.value }}
+        </div>
+        <div class="form-group" [class.has-error]="email.invalid">
+          <label for="email" class="control-label">Email</label>
+          <input id="email" [required]="contactPreference.value=='email'"
+                 type="text" class="form-control"
+                 pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+                 [(ngModel)]="crime.email" #email="ngModel" name="email">
+          <span class="help-block" *ngIf="email.errors?.required">
+            Email is required
+          </span>
+          <span class="help-block" *ngIf="email.errors?.pattern && email.touched">
+            Email is Invalid
+          </span>
+        </div>
+        <div class="form-group" [class.has-error]="phoneNumber.invalid">
+          <label for="phoneNumber" class="control-label">Phone Number</label>
+          <input id="phoneNumber" [required]="contactPreference.value=='phone'"
+                 #phoneNumber="ngModel" class="form-control" type="text"
+                 name="phoneNumber" [(ngModel)]="crime.phoneNumber">
+          <span class="help-block" *ngIf="phoneNumber.errors?.required">
+            Phone Number is required
+          </span>
+        </div>
+
+
+        <!--<div class="form-group">
+          <label for="nationality">Department</label>
+          <select id="nationality" name="nationality" [(ngModel)]="crime.nationality"
+                  class="form-control">
+            <option *ngFor="let dept of nationalities" [value]="dept.id">
+              {{dept.name}}
+            </option>
+          </select>
+        </div>-->
+        <div class="form-group"
+             [class.has-error]="nationality.touched && nationality.invalid">
+          <label for="nationality" class="control-label">
+            Nationality
+          </label>
+          <select id="nationality" required #nationality="ngModel" name="nationality"
+                  [(ngModel)]="crime.nationality" class="form-control">
+            <option value="-1">Select Nationality</option>
+            <option *ngFor="let nationality of nationalities" [value]="nationality.id">
+              {{nationality.name}}
+            </option>
+          </select>
+          <span class="help-block"
+                *ngIf="nationality.touched && nationality.invalid">
+            Nationality is required
+          </span>
+        </div>
+        <div class="form-group" [class.has-error]="isActive.invalid && isActive.touched">
+          <div class="form-control">
+            <label class="checkbox-inline control-label">
+              <input type="checkbox" required name="isActive"
+                     #isActive="ngModel" [(ngModel)]="crime.isActive">
+              Is Active
+            </label>
+          </div>
+          <span class="help-block"
+                *ngIf="isActive.errors?.required && isActive.touched">
+            Is Active is required
+          </span>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <button class="btn btn-primary" type="submit">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+<!--Angular Generated Form Model : {{crimeForm.value | json}}
+  <br />
+  <br />
+  Our Crime Model : {{ crime | json}}
+</div>-->

@@ -1,1 +1,127 @@
-<p>list-crimes works!</p>
+<!--<div class="container-fluid">
+  <div class="panel panel-primary" *ngFor="let crime of crimeList">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{crime.name}}</h3>
+    </div>
+    <div class="panel-body">
+
+      <div class="col-xs-10">
+
+        <div class="row vertical-align">
+
+          <div class="col-xs-4">
+            <img class="imageClass" [src]="crime.photoPath" />
+          </div>
+          <div class="col-xs-8">
+
+            <div class="row">
+              <div class="col-xs-6">
+                Gender
+              </div>
+              <div class="col-xs-6">
+                : {{crime.gender}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Date of Birth
+              </div>
+              <div class="col-xs-6">
+                : {{crime.dateOfBirth | date}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Contact Preference
+              </div>
+              <div class="col-xs-6">
+                : {{crime.contactPreference}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Phone
+              </div>
+              <div class="col-xs-6">
+                : {{crime.phoneNumber}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Email
+              </div>
+              <div class="col-xs-6">
+                : {{crime.email}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Department
+              </div>
+              <div class="col-xs-6">
+                : {{crime.department}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Is Active
+              </div>
+              <div class="col-xs-6">
+                : {{crime.isActive}}
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<div class="form-group">
+  <input type="text" class="form-control" placeholder="Search"
+         [(ngModel)]="searchTerm" />
+</div>
+<div *ngFor="let crime of crimeList | crimeFilter:searchTerm">
+  <div (click)="onClick(crime.id)" class="pointerCursor">
+    <app-display-crime [crime]="crime"></app-display-crime>
+  </div>
+</div>
+<div class="container-fluid">
+  <table class="table table-dark table-responsive">
+    <thead>
+      <tr>
+        <th>Case No</th>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Nationality</th>
+        <th>Email</th>
+        <th>Complaint</th>
+        <th>Progress Detail</th>
+        <th>Investigation Assignee</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let crime of crimeList | crimeFilter:searchTerm" (click)="onClick(crime.id)" class="pointerCursor">
+        <td align="center">{{crime.caseNumber}}</td>
+        <td>{{crime.date|date}}</td>
+        <td>{{crime.name}}</td>
+        <td>{{crime.gender}}</td>
+        <td>{{crime.age}}</td>
+        <td>{{crime.nationality}}</td>
+        <td>{{crime.email}}</td>
+        <td>{{crime.complaint}}</td>
+        <td>{{crime.progressDetail}}</td>
+        <td>{{crime.investigationAssignee}}</td>
+      </tr>
+
+    </tbody>
+    <tfoot></tfoot>
+  </table>
+</div>
+
+

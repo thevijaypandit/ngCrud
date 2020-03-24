@@ -1,1 +1,163 @@
-<p>detail-crime works!</p>
+<div class="container">
+
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{crime.name}}</h3>
+    </div>
+    <div class="panel-body">
+
+      <div class="col-xs-10">
+
+        <div class="row vertical-align">
+
+          <div class="col-xs-4">
+            <img class="imageClass" [src]="crime.photoPath" />
+          </div>
+          <div class="col-xs-8">
+            <div class="row">
+              <div class="col-xs-6">
+                Case No.
+              </div>
+              <div class="col-xs-6">
+                : {{crime.caseNumber}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                File No.
+              </div>
+              <div class="col-xs-6">
+                : {{crime.fileNumber}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Complaint
+              </div>
+              <div class="col-xs-6">
+                : {{crime.complaint}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Investigation Assignee
+              </div>
+              <div class="col-xs-6">
+                : {{crime.investigationAssignee}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Progress Detail
+              </div>
+              <div class="col-xs-6">
+                : {{crime.progressDetail}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Medium
+              </div>
+              <div class="col-xs-6">
+                : {{crime.medium}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Attachment
+              </div>
+              <div class="col-xs-6">
+                : {{crime.attachment}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Related Link
+              </div>
+              <div class="col-xs-6">
+                : {{crime.relatedLink}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Gender
+              </div>
+              <div class="col-xs-6">
+                : {{crime.gender}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Date
+              </div>
+              <div class="col-xs-6">
+                : {{crime.date | date}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Contact Preference
+              </div>
+              <div class="col-xs-6">
+                : {{crime.contactPreference}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Phone
+              </div>
+              <div class="col-xs-6">
+                : {{crime.phoneNumber}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Email
+              </div>
+              <div class="col-xs-6">
+                : {{crime.email}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Nationality
+              </div>
+              <div class="col-xs-6">
+                : {{crime.nationality}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Remarks
+              </div>
+              <div class="col-xs-6">
+                : {{crime.remarks}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                Is Active
+              </div>
+              <div class="col-xs-6">
+                : {{crime.isActive}}
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <a class="btn btn-default" routerLink="/crime/list">Back</a>
+      <button class="btn btn-default pull-right" (click)="getNextCrime()">
+        View Next Crime
+      </button>
+    </div>
+  </div>
+
+</div>
+
+
+
